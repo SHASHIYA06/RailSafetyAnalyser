@@ -21,12 +21,51 @@ export default function FilterSidebar({ onFiltersChange, dashboardStats }: Filte
     queryKey: ['/api/standards', { limit: 100 }]
   });
 
-  const categories = [
-    "Power & Electrical Systems",
-    "Control & Signaling", 
-    "Safety Systems",
-    "Communication Equipment",
-    "Mechanical Components"
+  const systemCategories = [
+    {
+      name: "Power & Electrical Systems",
+      subcategories: ["Traction Control", "Power Conversion", "Auxiliary Power", "Power Distribution"]
+    },
+    {
+      name: "Control & Signaling",
+      subcategories: ["Train Control", "CBTC", "ETCS", "Interlocking", "Level Crossings"]
+    },
+    {
+      name: "Safety Systems", 
+      subcategories: ["Fire Protection", "Emergency Braking", "Platform Safety", "Collision Avoidance"]
+    },
+    {
+      name: "Communication Equipment",
+      subcategories: ["Train Radio", "Digital Radio", "Data Communication", "Network Infrastructure"]
+    },
+    {
+      name: "Mechanical Components",
+      subcategories: ["Door Systems", "Brake Systems", "Coupling Systems", "Suspension"]
+    },
+    {
+      name: "Rolling Stock Systems",
+      subcategories: ["Bogies & Running Gear", "Propulsion", "Interior Systems", "Exterior Systems"]
+    },
+    {
+      name: "HVAC Systems",
+      subcategories: ["Climate Control", "Control Systems", "Air Quality", "Energy Management"]
+    },
+    {
+      name: "Passenger Information Systems",
+      subcategories: ["Display Systems", "Control Units", "Audio Systems", "Emergency Communication"]
+    },
+    {
+      name: "Infrastructure Systems", 
+      subcategories: ["Track Circuits", "Train Detection", "Signaling Infrastructure", "Power Infrastructure"]
+    },
+    {
+      name: "Platform Systems",
+      subcategories: ["Platform Screen Doors", "Ventilation Systems", "Lighting", "Passenger Flow"]
+    },
+    {
+      name: "Power Supply Infrastructure",
+      subcategories: ["Substations", "Power Distribution", "Overhead Lines", "Third Rail"]
+    }
   ];
 
   const mainStandards = [
@@ -71,19 +110,24 @@ export default function FilterSidebar({ onFiltersChange, dashboardStats }: Filte
           <CardTitle className="text-lg font-semibold text-railway-dark">Search Filters</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Component Category Filter */}
+          {/* System Category Filter */}
           <div>
             <Label className="text-sm font-medium text-gray-700 mb-2 block">
-              Component Category
+              Railway System
             </Label>
             <select 
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-railway-blue focus:border-railway-blue"
             >
-              <option value="">All Categories</option>
-              {categories.map(category => (
-                <option key={category} value={category}>{category}</option>
+              <option value="">All Systems</option>
+              {systemCategories.map(category => (
+                <optgroup key={category.name} label={category.name}>
+                  <option value={category.name}>{category.name} (All)</option>
+                  {category.subcategories.map(sub => (
+                    <option key={sub} value={sub}>→ {sub}</option>
+                  ))}
+                </optgroup>
               ))}
             </select>
           </div>

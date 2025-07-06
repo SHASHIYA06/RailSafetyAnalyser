@@ -13,11 +13,23 @@ interface ComponentSearchProps {
 const quickSearchTags = [
   "Traction Motors",
   "ETCS Systems", 
+  "CBTC Systems",
   "Power Converters",
   "Fire Detection",
   "Door Controllers",
   "Brake Systems",
-  "Signaling Equipment"
+  "Signaling Equipment",
+  "HVAC Systems",
+  "Platform Doors",
+  "Axle Counters",
+  "Track Circuits",
+  "Bogies",
+  "Radio Systems",
+  "Emergency Brake",
+  "Passenger Info",
+  "EN 50126",
+  "EN 50155",
+  "SIL 4 Components"
 ];
 
 export default function ComponentSearch({ onSearch, onFiltersChange, currentFilters }: ComponentSearchProps) {

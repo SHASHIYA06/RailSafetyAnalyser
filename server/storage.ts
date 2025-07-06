@@ -174,18 +174,18 @@ export class DatabaseStorage implements IStorage {
     }
 
     if (conditions.length > 0) {
-      query = query.where(and(...conditions));
+      query = query.where(and(...conditions)) as any;
     }
 
     // Apply sorting
     if (filters?.sortBy === 'rams_score') {
-      query = query.orderBy(desc(components.ramsScore));
+      query = query.orderBy(desc(components.ramsScore)) as any;
     } else if (filters?.sortBy === 'sil_level') {
-      query = query.orderBy(desc(components.silLevel));
+      query = query.orderBy(desc(components.silLevel)) as any;
     } else if (filters?.sortBy === 'updated') {
-      query = query.orderBy(desc(components.lastUpdated));
+      query = query.orderBy(desc(components.lastUpdated)) as any;
     } else {
-      query = query.orderBy(asc(components.name));
+      query = query.orderBy(asc(components.name)) as any;
     }
 
     const limit = filters?.limit || 20;
@@ -337,10 +337,10 @@ export class DatabaseStorage implements IStorage {
     }
 
     if (conditions.length > 0) {
-      query = query.where(and(...conditions));
+      query = query.where(and(...conditions)) as any;
     }
 
-    query = query.orderBy(asc(standards.code));
+    query = query.orderBy(asc(standards.code)) as any;
 
     const limit = filters?.limit || 50;
     const offset = filters?.offset || 0;
