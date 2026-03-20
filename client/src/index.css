@@ -3,69 +3,89 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(240, 10%, 3.9%);
-  --muted: hsl(240, 4.8%, 95.9%);
-  --muted-foreground: hsl(240, 3.8%, 46.1%);
+  --background: hsl(220, 20%, 97%);
+  --foreground: hsl(215, 25%, 15%);
+  --muted: hsl(220, 15%, 94%);
+  --muted-foreground: hsl(215, 12%, 50%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(215, 25%, 15%);
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(240, 10%, 3.9%);
-  --border: hsl(240, 5.9%, 90%);
-  --input: hsl(240, 5.9%, 90%);
+  --card-foreground: hsl(215, 25%, 15%);
+  --border: hsl(220, 15%, 88%);
+  --input: hsl(220, 15%, 92%);
   --primary: hsl(221, 83%, 53%);
   --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(240, 4.8%, 95.9%);
-  --secondary-foreground: hsl(240, 5.9%, 10%);
-  --accent: hsl(240, 4.8%, 95.9%);
-  --accent-foreground: hsl(240, 5.9%, 10%);
+  --secondary: hsl(220, 15%, 94%);
+  --secondary-foreground: hsl(215, 25%, 15%);
+  --accent: hsl(221, 83%, 53%);
+  --accent-foreground: hsl(210, 40%, 98%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(240, 10%, 3.9%);
-  --radius: 0.5rem;
-  
-  /* Railway-specific colors */
+  --ring: hsl(221, 83%, 53%);
+  --radius: 0.75rem;
+
   --railway-blue: hsl(221, 83%, 53%);
-  --railway-dark: hsl(215, 25%, 27%);
-  --safety-green: hsl(158, 64%, 52%);
+  --railway-blue-dark: hsl(221, 83%, 43%);
+  --railway-blue-light: hsl(221, 83%, 95%);
+  --railway-dark: hsl(215, 35%, 18%);
+  --railway-navy: hsl(215, 50%, 12%);
+  --safety-green: hsl(158, 64%, 42%);
+  --safety-green-light: hsl(158, 64%, 95%);
   --warning-orange: hsl(25, 95%, 53%);
-  --success-green: hsl(142, 71%, 45%);
-  --danger-red: hsl(0, 84%, 60%);
-  --chart-1: hsl(221, 83%, 53%);
-  --chart-2: hsl(158, 64%, 52%);
-  --chart-3: hsl(25, 95%, 53%);
-  --chart-4: hsl(0, 84%, 60%);
-  --chart-5: hsl(263, 70%, 50%);
+  --warning-orange-light: hsl(25, 95%, 95%);
+  --success-green: hsl(142, 71%, 40%);
+  --success-green-light: hsl(142, 71%, 95%);
+  --danger-red: hsl(0, 84%, 55%);
+  --danger-red-light: hsl(0, 84%, 95%);
+  --purple: hsl(263, 70%, 50%);
+  --purple-light: hsl(263, 70%, 95%);
+  --sidebar-bg: hsl(215, 50%, 12%);
+  --sidebar-hover: hsl(215, 45%, 20%);
+  --sidebar-active: hsl(221, 83%, 53%);
+  --sidebar-text: hsl(210, 30%, 80%);
+  --sidebar-text-active: hsl(0, 0%, 100%);
 }
 
 .dark {
-  --background: hsl(240, 10%, 3.9%);
-  --foreground: hsl(0, 0%, 98%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
-  --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(221, 83%, 53%);
-  --primary-foreground: hsl(210, 40%, 98%);
-  --secondary: hsl(240, 3.7%, 15.9%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 62.8%, 30.6%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
-  
-  /* Railway-specific colors for dark mode */
-  --railway-blue: hsl(221, 83%, 53%);
-  --railway-dark: hsl(215, 25%, 87%);
+  --background: hsl(215, 35%, 9%);
+  --foreground: hsl(210, 30%, 92%);
+  --muted: hsl(215, 30%, 15%);
+  --muted-foreground: hsl(215, 15%, 55%);
+  --popover: hsl(215, 35%, 12%);
+  --popover-foreground: hsl(210, 30%, 92%);
+  --card: hsl(215, 35%, 12%);
+  --card-foreground: hsl(210, 30%, 92%);
+  --border: hsl(215, 25%, 20%);
+  --input: hsl(215, 25%, 18%);
+  --primary: hsl(221, 83%, 60%);
+  --primary-foreground: hsl(215, 35%, 9%);
+  --secondary: hsl(215, 30%, 18%);
+  --secondary-foreground: hsl(210, 30%, 92%);
+  --accent: hsl(221, 83%, 60%);
+  --accent-foreground: hsl(215, 35%, 9%);
+  --destructive: hsl(0, 62.8%, 50%);
+  --destructive-foreground: hsl(210, 30%, 92%);
+  --ring: hsl(221, 83%, 60%);
+
+  --railway-blue: hsl(221, 83%, 60%);
+  --railway-blue-dark: hsl(221, 83%, 50%);
+  --railway-blue-light: hsl(221, 83%, 15%);
+  --railway-dark: hsl(210, 30%, 85%);
   --safety-green: hsl(158, 64%, 52%);
-  --warning-orange: hsl(25, 95%, 53%);
-  --success-green: hsl(142, 71%, 45%);
-  --danger-red: hsl(0, 84%, 60%);
+  --safety-green-light: hsl(158, 64%, 12%);
+  --warning-orange: hsl(25, 95%, 60%);
+  --warning-orange-light: hsl(25, 95%, 12%);
+  --success-green: hsl(142, 71%, 50%);
+  --success-green-light: hsl(142, 71%, 12%);
+  --danger-red: hsl(0, 84%, 65%);
+  --danger-red-light: hsl(0, 84%, 12%);
+  --purple: hsl(263, 70%, 65%);
+  --purple-light: hsl(263, 70%, 12%);
+  --sidebar-bg: hsl(215, 55%, 8%);
+  --sidebar-hover: hsl(215, 45%, 15%);
+  --sidebar-active: hsl(221, 83%, 53%);
+  --sidebar-text: hsl(210, 20%, 65%);
+  --sidebar-text-active: hsl(0, 0%, 100%);
 }
 
 @layer base {
@@ -73,57 +93,201 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(220, 15%, 75%);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(220, 15%, 60%);
   }
 }
 
 @layer utilities {
-  .railway-blue {
-    color: var(--railway-blue);
+  .railway-blue { color: var(--railway-blue); }
+  .bg-railway-blue { background-color: var(--railway-blue); }
+  .bg-railway-blue-light { background-color: var(--railway-blue-light); }
+  .railway-dark { color: var(--railway-dark); }
+  .bg-railway-dark { background-color: var(--railway-dark); }
+  .text-railway-dark { color: var(--railway-dark); }
+  .text-railway-blue { color: var(--railway-blue); }
+  .safety-green { color: var(--safety-green); }
+  .bg-safety-green { background-color: var(--safety-green); }
+  .warning-orange { color: var(--warning-orange); }
+  .bg-warning-orange { background-color: var(--warning-orange); }
+  .success-green { color: var(--success-green); }
+  .bg-success-green { background-color: var(--success-green); }
+  .danger-red { color: var(--danger-red); }
+  .bg-danger-red { background-color: var(--danger-red); }
+  .text-success-green { color: var(--success-green); }
+  .text-danger-red { color: var(--danger-red); }
+  .text-warning-orange { color: var(--warning-orange); }
+  .text-safety-green { color: var(--safety-green); }
+
+  .sidebar-bg { background-color: var(--sidebar-bg); }
+  .sidebar-hover:hover { background-color: var(--sidebar-hover); }
+  .sidebar-text { color: var(--sidebar-text); }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
-  
-  .bg-railway-blue {
-    background-color: var(--railway-blue);
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
-  
-  .railway-dark {
-    color: var(--railway-dark);
+
+  .gradient-railway {
+    background: linear-gradient(135deg, hsl(221, 83%, 53%) 0%, hsl(215, 50%, 35%) 100%);
   }
-  
-  .bg-railway-dark {
-    background-color: var(--railway-dark);
+
+  .gradient-dark {
+    background: linear-gradient(135deg, hsl(215, 50%, 12%) 0%, hsl(215, 35%, 22%) 100%);
   }
-  
-  .safety-green {
-    color: var(--safety-green);
+
+  .gradient-success {
+    background: linear-gradient(135deg, hsl(142, 71%, 40%) 0%, hsl(158, 64%, 42%) 100%);
   }
-  
-  .bg-safety-green {
-    background-color: var(--safety-green);
+
+  .gradient-warning {
+    background: linear-gradient(135deg, hsl(25, 95%, 53%) 0%, hsl(35, 95%, 55%) 100%);
   }
-  
-  .warning-orange {
-    color: var(--warning-orange);
+
+  .gradient-danger {
+    background: linear-gradient(135deg, hsl(0, 84%, 55%) 0%, hsl(15, 84%, 55%) 100%);
   }
-  
-  .bg-warning-orange {
-    background-color: var(--warning-orange);
+
+  .gradient-purple {
+    background: linear-gradient(135deg, hsl(263, 70%, 50%) 0%, hsl(280, 70%, 55%) 100%);
   }
-  
-  .success-green {
-    color: var(--success-green);
+
+  .card-hover {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
-  .bg-success-green {
-    background-color: var(--success-green);
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
   }
-  
-  .danger-red {
-    color: var(--danger-red);
+
+  .stat-card {
+    position: relative;
+    overflow: hidden;
   }
-  
-  .bg-danger-red {
-    background-color: var(--danger-red);
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    opacity: 0.06;
+    transform: translate(30px, -30px);
+    background: currentColor;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-count {
+    animation: countUp 1s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .sil-badge-0 { @apply bg-gray-100 text-gray-700 border border-gray-300; }
+  .sil-badge-1 { @apply bg-yellow-50 text-yellow-700 border border-yellow-300; }
+  .sil-badge-2 { @apply bg-orange-50 text-orange-700 border border-orange-300; }
+  .sil-badge-3 { @apply bg-red-50 text-red-700 border border-red-300; }
+  .sil-badge-4 { @apply bg-purple-50 text-purple-700 border border-purple-300; }
+
+  .risk-low { @apply bg-green-50 text-green-700 border border-green-200; }
+  .risk-medium { @apply bg-orange-50 text-orange-700 border border-orange-200; }
+  .risk-high { @apply bg-red-50 text-red-700 border border-red-200; }
+
+  .score-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: hsl(220, 15%, 90%);
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    color: var(--sidebar-text);
+    text-decoration: none;
+  }
+
+  .nav-item:hover {
+    background-color: var(--sidebar-hover);
+    color: white;
+  }
+
+  .nav-item.active {
+    background-color: var(--sidebar-active);
+    color: var(--sidebar-text-active);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  }
+
+  .section-header {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--sidebar-text);
+    opacity: 0.5;
+    padding: 8px 16px 4px;
+    margin-top: 8px;
   }
 }

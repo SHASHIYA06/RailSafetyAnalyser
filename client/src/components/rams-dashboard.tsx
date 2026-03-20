@@ -1,5 +1,4 @@
 import { CheckCircle, Clock, Shield, TrendingUp } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 
 interface RAMSDashboardProps {
   stats?: {
@@ -12,63 +11,55 @@ interface RAMSDashboardProps {
 }
 
 export default function RAMSDashboard({ stats }: RAMSDashboardProps) {
-  const ramsMetrics = [
+  const metrics = [
     {
       title: "Reliability",
       value: stats ? Math.round(stats.averageRAMSScore * 0.97) : 94,
       icon: CheckCircle,
-      color: "success-green"
+      color: "#16a34a",
     },
     {
-      title: "Availability", 
+      title: "Availability",
       value: stats ? Math.round(stats.averageRAMSScore * 0.99) : 98,
       icon: TrendingUp,
-      color: "railway-blue"
+      color: "#2563eb",
     },
     {
       title: "Maintainability",
       value: stats ? Math.round(stats.averageRAMSScore * 0.89) : 87,
       icon: Clock,
-      color: "warning-orange"
+      color: "#d97706",
     },
     {
-      title: "Safety (SIL)",
-      value: stats ? `SIL ${Math.min(4, Math.floor(stats.averageRAMSScore / 25) + 1)}` : "SIL 3",
+      title: "Safety",
+      value: stats ? Math.round(stats.averageRAMSScore * 0.96) : 96,
       icon: Shield,
-      color: "danger-red"
-    }
+      color: "#dc2626",
+    },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-      {ramsMetrics.map((metric) => {
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+      {metrics.map((metric) => {
         const Icon = metric.icon;
         return (
-          <Card key={metric.title}>
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">{metric.title}</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {typeof metric.value === 'string' ? metric.value : `${metric.value}%`}
-                  </p>
-                </div>
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                  metric.color === 'success-green' ? 'bg-green-100' :
-                  metric.color === 'railway-blue' ? 'bg-blue-100' :
-                  metric.color === 'warning-orange' ? 'bg-orange-100' :
-                  metric.color === 'danger-red' ? 'bg-red-100' : 'bg-gray-100'
-                }`}>
-                  <Icon className={`h-6 w-6 ${
-                    metric.color === 'success-green' ? 'text-success-green' :
-                    metric.color === 'railway-blue' ? 'text-railway-blue' :
-                    metric.color === 'warning-orange' ? 'text-warning-orange' :
-                    metric.color === 'danger-red' ? 'text-danger-red' : 'text-gray-600'
-                  }`} />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <div
+            key={metric.title}
+            className="bg-white dark:bg-card rounded-xl border border-border p-4 flex items-center justify-between shadow-sm"
+          >
+            <div>
+              <p className="text-xs text-muted-foreground font-medium mb-1">{metric.title}</p>
+              <p className="text-2xl font-bold" style={{ color: metric.color }}>
+                {metric.value}%
+              </p>
+            </div>
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ background: `${metric.color}15` }}
+            >
+              <Icon className="h-5 w-5" style={{ color: metric.color }} />
+            </div>
+          </div>
         );
       })}
     </div>

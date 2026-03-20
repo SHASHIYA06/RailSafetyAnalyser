@@ -3,17 +3,25 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import DashboardPage from "@/pages/dashboard";
 import ComponentsPage from "@/pages/components";
 import StandardsLibraryPage from "@/pages/standards-library";
 import RAMSAnalysisPage from "@/pages/rams-analysis";
+import NewsPage from "@/pages/news";
+import DocumentsPage from "@/pages/documents";
+import AdminPage from "@/pages/admin";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={ComponentsPage} />
+      <Route path="/" component={DashboardPage} />
+      <Route path="/components" component={ComponentsPage} />
       <Route path="/standards" component={StandardsLibraryPage} />
       <Route path="/rams" component={RAMSAnalysisPage} />
+      <Route path="/news" component={NewsPage} />
+      <Route path="/documents" component={DocumentsPage} />
+      <Route path="/admin" component={AdminPage} />
       <Route component={NotFound} />
     </Switch>
   );

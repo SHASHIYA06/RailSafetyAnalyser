@@ -107,6 +107,7 @@ export interface IStorage {
     certifiedSuppliers: number;
     averageRAMSScore: number;
     complianceRate: number;
+    sil4Count: number;
   }>;
 }
 
@@ -512,12 +513,18 @@ export class DatabaseStorage implements IStorage {
       ? (complianceStats.compliant / complianceStats.total) * 100 
       : 0;
 
+    const [sil4Stats] = await db
+      .select({ count: sql<number>`count(*)` })
+      .from(components)
+      .where(eq(components.silLevel, 4));
+
     return {
       totalComponents: componentsCount.count,
       totalStandards: standardsCount.count,
       certifiedSuppliers: suppliersCount.count,
       averageRAMSScore: Number(avgRams.avg) || 0,
-      complianceRate
+      complianceRate,
+      sil4Count: Number(sil4Stats?.count) || 0,
     };
   }
 }
