@@ -35,10 +35,12 @@ A comprehensive **Depot Level Parts (DLP) Store Inventory Management System** fo
 
 ## Authentication
 
-- **Admin Passcode**: `9799494321`
-- Auth stored in localStorage (`dlp_auth=true`)
-- All routes protected with auth guard redirect to `/login`
-- Logout button available in sidebar
+- **Admin Passcode**: `9799494321` (hardcoded, always works)
+- **Firebase Auth**: email/password login (optional — only shown if `VITE_FIREBASE_*` env vars are set)
+- Auth stored in localStorage (`dlp_auth=true`, `dlp_role`, `dlp_user`)
+- All routes protected with auth guard — redirect to `/login` when not authenticated
+- Logout button in sidebar (clears localStorage, redirects to login)
+- `client/src/lib/auth.ts` — `isAuthenticated()`, `logout()`, `getUser()`
 
 ## Key Features
 
@@ -49,6 +51,10 @@ A comprehensive **Depot Level Parts (DLP) Store Inventory Management System** fo
 4. **Vendors** (`/vendors`) — 10 certified suppliers (India/Germany/France) with ratings
 5. **Train Systems** (`/systems`) — 14 metro subsystems with stock consumption rates
 6. **Transactions** (`/transactions`) — Full audit trail of receipts, issues, returns, transfers
+7. **New Transaction** (`/issue`) — Issue/Receipt/Return form with item search + audit trail
+8. **Reports & Analytics** (`/reports`) — Recharts dashboards, category charts, low-stock table, CSV export
+9. **Item Manager** (`/item-manager`) — Full CRUD (Add/Edit/Delete) for inventory items
+10. **Alerts** (`/alerts`) — Active alerts management with resolve/dismiss functionality
 
 ### RAMS Module (retained)
 - Standards Library (30+ EN standards)
@@ -74,6 +80,9 @@ A comprehensive **Depot Level Parts (DLP) Store Inventory Management System** fo
 - `GET /api/dlp/stats` — Dashboard statistics
 - `GET /api/dlp/items` — DLP inventory with search/filter
 - `GET /api/dlp/items/:id` — Single item detail
+- `POST /api/dlp/items` — Add new inventory item
+- `PATCH /api/dlp/items/:id` — Update inventory item
+- `DELETE /api/dlp/items/:id` — Delete inventory item
 - `GET /api/dlp/tools` — Tools inventory
 - `GET /api/dlp/vendors` — Vendor master list
 - `GET /api/dlp/systems` — Train systems breakdown
@@ -90,9 +99,26 @@ A comprehensive **Depot Level Parts (DLP) Store Inventory Management System** fo
 
 ## Deployment
 
-- Development: `npm run dev` on port 5000
-- Schema updates: `npm run db:push`
-- Re-seed DLP data: `npx tsx -e "import { seedDlpData } from './server/dlp-seed.ts'; seedDlpData()"`
+### Development
+- `npm run dev` — starts Express + Vite on port 5000
+- `npm run db:push` — push schema changes to Neon DB
+- Re-seed: `npx tsx -e "import { seedDlpData } from './server/dlp-seed.ts'; seedDlpData()"`
+
+### GitHub
+- `.gitignore` configured (excludes node_modules, dist, .env, .replit, migrations, attached_assets)
+- Copy `.env.example` to `.env` and fill in real values before deploying
+
+### Vercel Deployment
+- `vercel.json` configured with build command, rewrites, and CORS headers
+- `api/index.ts` is the serverless entry point (wraps Express routes)
+- Set environment variables in Vercel dashboard: `DATABASE_URL`, `OPENROUTER_API_KEY`, Firebase vars
+- `npm run build` output goes to `dist/public` (Vite static) + `dist/index.js` (Express)
+
+### Firebase Authentication (Optional)
+- Set `VITE_FIREBASE_*` env vars to enable Firebase Auth (see `.env.example`)
+- Without Firebase vars: login shows passcode-only mode
+- With Firebase vars: dual-mode (passcode admin + Firebase email/password)
+- `client/src/lib/firebase.ts` handles all Firebase SDK initialization
 
 ## Changelog
 

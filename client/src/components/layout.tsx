@@ -3,7 +3,8 @@ import { Link, useLocation } from "wouter";
 import {
   Train, LayoutDashboard, Package, Wrench, Building2, Cpu,
   Settings, ChevronLeft, ChevronRight, Bell, Moon, Sun, Menu,
-  BarChart3, BookOpen, Brain, Cloud, ArrowUpDown, LogOut, Newspaper
+  BarChart3, BookOpen, Brain, Cloud, ArrowUpDown, LogOut, Newspaper,
+  PlusCircle, FileBarChart2, PackagePlus, ShieldAlert
 } from "lucide-react";
 import { logout, getUser } from "@/lib/auth";
 import KhushiAgent from "./khushi-agent";
@@ -25,6 +26,15 @@ const navSections = [
       { href: "/vendors", icon: Building2, label: "Vendors" },
       { href: "/systems", icon: Cpu, label: "Train Systems" },
       { href: "/transactions", icon: ArrowUpDown, label: "Transactions" },
+      { href: "/issue", icon: PlusCircle, label: "New Transaction" },
+      { href: "/alerts", icon: ShieldAlert, label: "Alerts", badge: "!" },
+    ]
+  },
+  {
+    section: "Reports & Admin",
+    items: [
+      { href: "/reports", icon: FileBarChart2, label: "Reports & Analytics" },
+      { href: "/item-manager", icon: PackagePlus, label: "Item Manager" },
     ]
   },
   {

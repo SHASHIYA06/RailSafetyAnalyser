@@ -430,6 +430,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.post("/api/dlp/items", async (req: Request, res: Response) => {
+    try {
+      const item = await storage.createDlpItem(req.body);
+      res.json(item);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create DLP item" });
+    }
+  });
+
+  app.patch("/api/dlp/items/:id", async (req: Request, res: Response) => {
+    try {
+      const item = await storage.updateDlpItem(parseInt(req.params.id), req.body);
+      if (!item) return res.status(404).json({ error: "Item not found" });
+      res.json(item);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update DLP item" });
+    }
+  });
+
+  app.delete("/api/dlp/items/:id", async (req: Request, res: Response) => {
+    try {
+      const item = await storage.deleteDlpItem(parseInt(req.params.id));
+      if (!item) return res.status(404).json({ error: "Item not found" });
+      res.json({ success: true, deleted: item });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete DLP item" });
+    }
+  });
+
   app.get("/api/dlp/tools", async (req: Request, res: Response) => {
     try {
       const { search, category, condition } = req.query as Record<string, string>;

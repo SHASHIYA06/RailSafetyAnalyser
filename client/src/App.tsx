@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation, Redirect } from "wouter";
+import { Switch, Route, Redirect } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -11,6 +11,10 @@ import DlpToolsPage from "@/pages/dlp-tools";
 import DlpVendorsPage from "@/pages/dlp-vendors";
 import DlpSystemsPage from "@/pages/dlp-systems";
 import DlpTransactionsPage from "@/pages/dlp-transactions";
+import DlpIssueFormPage from "@/pages/dlp-issue-form";
+import DlpReportsPage from "@/pages/dlp-reports";
+import DlpItemManagerPage from "@/pages/dlp-item-manager";
+import DlpAlertsPage from "@/pages/dlp-alerts";
 import ComponentsPage from "@/pages/components";
 import StandardsLibraryPage from "@/pages/standards-library";
 import RAMSAnalysisPage from "@/pages/rams-analysis";
@@ -37,6 +41,10 @@ function Router() {
       <Route path="/vendors" component={() => <ProtectedRoute component={DlpVendorsPage} />} />
       <Route path="/systems" component={() => <ProtectedRoute component={DlpSystemsPage} />} />
       <Route path="/transactions" component={() => <ProtectedRoute component={DlpTransactionsPage} />} />
+      <Route path="/issue" component={() => <ProtectedRoute component={DlpIssueFormPage} />} />
+      <Route path="/reports" component={() => <ProtectedRoute component={DlpReportsPage} />} />
+      <Route path="/item-manager" component={() => <ProtectedRoute component={DlpItemManagerPage} />} />
+      <Route path="/alerts" component={() => <ProtectedRoute component={DlpAlertsPage} />} />
       <Route path="/search" component={() => <ProtectedRoute component={AISearchPage} />} />
       <Route path="/components" component={() => <ProtectedRoute component={ComponentsPage} />} />
       <Route path="/standards" component={() => <ProtectedRoute component={StandardsLibraryPage} />} />

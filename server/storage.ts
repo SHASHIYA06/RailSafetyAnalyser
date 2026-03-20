@@ -641,6 +641,24 @@ export class DatabaseStorage implements IStorage {
     return { transactions, total: transactions.length };
   }
 
+  async createDlpItem(data: any) {
+    const [item] = await db.insert(dlpItems).values(data).returning();
+    return item;
+  }
+
+  async updateDlpItem(id: number, data: any) {
+    const [item] = await db.update(dlpItems)
+      .set({ ...data, lastUpdated: new Date() })
+      .where(eq(dlpItems.id, id))
+      .returning();
+    return item;
+  }
+
+  async deleteDlpItem(id: number) {
+    const [item] = await db.delete(dlpItems).where(eq(dlpItems.id, id)).returning();
+    return item;
+  }
+
   async createDlpTransaction(data: InsertDlpTransaction) {
     const [tx] = await db.insert(dlpTransactions).values(data).returning();
     return tx;
