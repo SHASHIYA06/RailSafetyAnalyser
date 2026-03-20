@@ -1,0 +1,246 @@
+below is a full PRD and TRD rewritten for your final stack: Vercel frontend + Firebase backend + Neon PostgreSQL + OpenRouter API + Gemini API, while preserving the requirements from your attached document such as component search, standards library, RAMS analysis, document upload/indexing, Google Drive integration, voice search, exports, and daily rail/metro news updates.
+​
+
+PRD
+The attached document makes the product goal clear: build a full railway and metro RAMS application where a user can search any electrical, mechanical, or electronic component and get applicable standards, safety/reliability details, study materials, uploaded documents, and searchable results from indexed RAMS content. It also asks for standards search, document upload with chunking and indexing, Google Drive document access, voice-based search, exports, and a daily 5 PM sync for rail and metro news.
+​
+
+PRD Area	Definition
+Product name	Rail & Metro RAMS Intelligence Platform
+Product vision	A web application that lets users search components, standards, clauses, and documents to retrieve RAMS-aligned guidance, compliance references, study material, and AI-assisted answers. 
+​
+Core problem	The user wants one system that combines railway standards, RAMS rules, uploaded documents, Google Drive files, and search so answers are not scattered across PDFs, presentations, and separate sources. 
+​
+Primary users	RAMS engineers, rail/metro project teams, safety reviewers, maintenance teams, consultants, and standards researchers. 
+​
+Primary use cases	Search a component and see relevant standards and RAMS details; browse standards library; upload and index RAMS documents; open Google Drive presentations and documents inside the app; run AI-assisted search; export results. 
+​
+Business outcome	Reduce time to find standards-related answers, improve traceability between component and standard, and create a reusable knowledge platform for railway and metro safety/compliance work. 
+​
+Scope
+
+The attached material consistently asks for these modules, so they should be treated as MVP-plus core scope rather than optional extras.
+​
+
+Module	Requirements
+Component search	Search by component name/type/code and return standards, RAMS category, SIL level, compliance score, and technical details. 
+​
+Standards library	Browse EN, IEC, and related railway standards, with metadata, summaries, tags, linked source documents, and study support. 
+​
+Clause/document search	Search inside indexed RAMS documents and standards-related content with chunk-based retrieval. 
+​
+Google Drive integration	Connect shared Drive folders so users can browse and open RAMS presentations and standards documents in-app. 
+​
+AI assistant	Use Gemini-powered and OpenRouter-powered workflows for semantic retrieval, answer generation, summarization, and guided research. 
+​
+Voice search	Support voice-driven search queries for documents and standards lookup. 
+​
+Dashboard	Show RAMS metrics, component coverage, risk distribution, usage analytics, and update status. 
+​
+News updates	Auto-refresh rail and metro news daily at 5 PM. 
+​
+Export	Export search results, reports, and dashboards to CSV/PDF. 
+​
+Functional requirements
+
+Users can search components and receive matched standards, clauses, RAMS tags, SIL relevance, scores, and linked source documents.
+​
+
+Users can browse a standards catalog and open the related study material or permitted source documents.
+​
+
+Users can upload RAMS documents, presentations, spreadsheets, and PDFs, and the system must chunk, embed, index, and retrieve them during search.
+​
+
+Users can connect Google Drive folders and browse or preview documents inside the application.
+​
+
+Users can ask natural-language questions, including by voice, and receive cited answers grounded in indexed content and approved external sources.
+​
+
+The system runs a scheduled daily synchronization for news and optionally for document refresh.
+​
+
+Admins can manage sources, prompts, indexing jobs, roles, API settings, and content refresh schedules.
+​
+
+Non-functional requirements
+
+Area	Requirement
+UX	Attractive railway-themed UI, responsive layout, fast search, and clean navigation across search, standards, documents, and dashboard. 
+​
+Performance	Search response should feel near-real-time for cached/common queries, and long-running ingestion must run asynchronously.
+Security	Private docs must require authentication, role-based access, encrypted secrets, and audited admin actions.
+Compliance	Do not reproduce copyrighted standards text unless you have rights; store metadata, owned documents, permitted snippets, and user-provided source files. 
+​
+Reliability	Indexing jobs, AI calls, and sync tasks need retries, dead-letter handling, and observable logs.
+Scalability	Architecture should support serverless scale on Firebase and read-heavy search traffic from Vercel clients.
+Success metrics
+
+The product succeeds if users can find the right standard or document faster and trust the result because the answer links back to the source artifact or clause. Useful KPIs are search success rate, time-to-first-relevant-result, document indexing success rate, AI answer citation rate, monthly active users, and admin ingestion turnaround time.
+​
+
+TRD
+Given your chosen stack, the best-fit technical design is Next.js on Vercel for the frontend, Firebase Functions v2 for the backend API, Firebase Auth for identity, Firebase Storage for uploaded files, Neon PostgreSQL for structured data, and OpenRouter + Gemini for AI orchestration. This architecture directly supports the attached requirements for search, uploads, Drive integration, voice search, AI workflows, exports, and scheduled refresh jobs.
+​
+
+Layer	Technology	Purpose
+Frontend	Next.js 15 + TypeScript + Tailwind + shadcn/ui on Vercel	App UI, SSR where useful, fast deployment, route protection
+Backend API	Firebase Functions v2 (Node.js/TypeScript)	REST/JSON APIs, webhooks, ingestion endpoints, AI endpoints
+Auth	Firebase Auth	Email/password, Google sign-in, admin roles
+Database	Neon PostgreSQL + Prisma ORM	Standards, clauses, components, mappings, prompts, jobs, audit logs
+File storage	Firebase Storage	Uploaded PDFs, PPTs, DOCX, CSV, extracted text artifacts
+Search index	PostgreSQL pgvector in Neon	Embeddings for semantic search and RAG
+Queue/orchestration	Cloud Tasks + Pub/Sub + Scheduler	Async ingestion, retries, daily 5 PM updates
+External docs	Google Drive API	Read shared folders and sync metadata/files
+AI	OpenRouter API + Gemini API	Answer generation, summarization, classification, extraction
+Monitoring	Firebase Logs + Error Reporting + Uptime + PostHog/Sentry	Operational visibility
+Architecture
+
+The application should use a hybrid structured + semantic retrieval model because your attached requirements include both exact lookup of standards/components and AI-assisted document search over uploaded RAMS materials. Structured data lives in Neon, raw files live in Firebase Storage, extracted text chunks and embeddings are written to Neon, and Firebase Functions provide search, ingestion, sync, and AI answer APIs.
+​
+
+Core flow
+
+Vercel frontend calls Firebase HTTPS endpoints.
+
+Firebase verifies Firebase Auth token.
+
+API reads/writes structured records in Neon.
+
+Uploaded files go to Firebase Storage.
+
+Ingestion workers extract text, chunk it, generate embeddings, and store chunks in Neon.
+
+Retrieval service combines keyword filters, SQL relations, and vector similarity.
+
+LLM service uses OpenRouter or Gemini to answer with citations.
+
+Scheduler runs daily news/document refresh at 5 PM.
+​
+
+Data model
+
+The attached document repeatedly centers on standards, clauses, components, RAMS mappings, documents, and searchability, so the schema should prioritize those entities.
+​
+
+Table	Key columns
+users	id, firebase_uid, email, role, status
+organizations	id, name
+standards	id, code, title, issuer, family, year, category, license_type, source_url
+clauses	id, standard_id, clause_ref, heading, summary, canonical_text_ref
+components	id, name, type, subsystem, manufacturer, model, metadata_json
+component_standard_map	id, component_id, standard_id, clause_id, rams_category, sil_level, compliance_score, rationale
+documents	id, source_type, source_uri, title, mime_type, storage_path, checksum, status
+document_chunks	id, document_id, chunk_index, chunk_text, embedding, page_ref
+drive_sources	id, folder_id, name, sync_mode, last_synced_at
+ai_answers	id, user_id, query, model_provider, answer_text, citations_json
+sync_jobs	id, job_type, status, started_at, finished_at, log_json
+news_items	id, title, source, published_at, summary, url
+audits	id, actor_id, action, entity_type, entity_id, payload_json, created_at
+API design
+
+Endpoint group	Endpoints
+Auth	POST /auth/session, GET /auth/me
+Search	GET /search/components, GET /search/standards, GET /search/documents, POST /search/ask
+Standards	GET /standards, GET /standards/:id, GET /standards/:id/clauses
+Components	GET /components, GET /components/:id, POST /components, PATCH /components/:id
+Documents	POST /documents/upload-url, POST /documents/ingest, GET /documents/:id, GET /documents/:id/chunks
+Drive	POST /drive/sources, POST /drive/sync, GET /drive/files
+Voice	POST /voice/transcribe, POST /voice/query
+News	GET /news, POST /jobs/news-sync
+Admin	GET /admin/jobs, POST /admin/reindex, POST /admin/prompts
+Export	POST /export/search, POST /export/report
+AI design
+
+Use Gemini for multimodal-heavy tasks like long-document extraction, document summarization, and optional image/PDF reasoning, and use OpenRouter for model routing, fallback, and cost/performance control across answer-generation models. This setup fits the attached request for special AI tools, automation, document understanding, and smart search across uploaded materials.
+​
+
+Recommended split
+
+Gemini:
+
+PDF/document summarization
+
+metadata extraction
+
+classification of document type
+
+optional image/chart understanding
+
+OpenRouter:
+
+final answer generation
+
+fallback model routing
+
+comparative prompting
+
+lower-cost semantic QA flows
+
+Embeddings:
+
+choose one embedding provider consistently for chunk vectors
+
+store vectors in Neon pgvector
+
+Setup decisions
+Below is the exact setup I recommend for your deployment model.
+
+Area	Final setup
+Frontend hosting	Vercel
+Frontend framework	Next.js App Router, TypeScript
+Backend hosting	Firebase Functions v2
+Backend framework	Express or Fastify inside Functions
+Database	Neon PostgreSQL
+ORM	Prisma
+Auth	Firebase Auth
+Uploads	Firebase Storage
+Search	PostgreSQL full-text + pgvector
+Scheduled jobs	Firebase Scheduler + Pub/Sub/Cloud Tasks
+AI keys	OPENROUTER_API_KEY, GEMINI_API_KEY
+Secrets	Firebase Secret Manager + Vercel env vars
+Admin UI	Inside the same Vercel app under /admin
+Document sync	Google Drive API service account
+News refresh	Scheduled function at 5 PM daily, matching the attached requirement. 
+​
+Environment variables
+
+Platform	Variables
+Vercel	NEXT_PUBLIC_API_BASE_URL, NEXT_PUBLIC_FIREBASE_API_KEY, NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN, NEXT_PUBLIC_FIREBASE_PROJECT_ID, NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET, NEXT_PUBLIC_FIREBASE_APP_ID
+Firebase Functions	NEON_DATABASE_URL, OPENROUTER_API_KEY, GEMINI_API_KEY, GOOGLE_DRIVE_SERVICE_ACCOUNT_JSON, GOOGLE_DRIVE_DEFAULT_FOLDER_ID, NEWS_CRON_TIMEZONE, ALLOWED_ORIGIN, EXPORT_BUCKET
+Shared	APP_ENV, LOG_LEVEL, SENTRY_DSN
+Repository structure
+
+text
+rail-rams-platform/
+  apps/
+    web/                    # Next.js on Vercel
+  functions/
+    src/
+      api/
+      jobs/
+      ai/
+      drive/
+      search/
+      exports/
+    package.json
+    firebase.json
+  packages/
+    db/                     # Prisma schema, migrations
+    ui/                     # shared UI components
+    types/
+    prompts/
+  infra/
+    docs/
+Delivery phases
+
+Phase	Output
+Phase 1	Auth, Neon schema, standards/components CRUD, basic search
+Phase 2	Document upload, chunking, embeddings, RAG search
+Phase 3	Google Drive sync, in-app document preview, exports
+Phase 4	Voice search, dashboards, admin controls
+Phase 5	Daily news sync, analytics, hardening, production readiness
+Important constraints
+Your attached document asks for “all railway standards” and full standards-based search, but in production the system should not store or display copyrighted standards text unless you own the documents or have distribution rights. The correct production approach is to store metadata, clause references, your licensed/internal documents, user-uploaded files, and AI-generated summaries/snippets derived from permitted content.
+​
