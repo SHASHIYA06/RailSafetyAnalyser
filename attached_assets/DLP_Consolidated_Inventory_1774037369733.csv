@@ -1,0 +1,21 @@
+Item_ID,Part_Number,Description,Category,System_Type,Vendor_Name,Unit_of_Measure,Received_Qty,Consumed_Qty,Available_Qty,Recommended_Qty,Reorder_Level,Status,Last_Updated,Notes
+DLP-001,II91919/02105,Safety Valve - Brake System,Brake,Brake System,KBI Brake,Piece,15,8,7,10,5,ACTIVE,2026-03-19,Critical safety component
+DLP-002,II91919/02106,Ballcock Assembly - Brake,Brake,Brake System,KBI Brake,Piece,12,5,7,8,4,ACTIVE,2026-03-19,Standard wear item
+DLP-003,AM5007,Traction Motor Unit - 300KW,Traction,Traction Motor & Inverter,M/s MELCO,Unit,4,1,3,2,1,ACTIVE,2026-03-19,Rarely replaced
+DLP-004,AM5008,Inverter Module - Gate Circuit,Traction,Traction Motor & Inverter,M/s MELCO,Unit,4,1,3,2,1,ACTIVE,2026-03-19,Planned replacement
+DLP-005,KS1001,Brake Cylinder - Type A,Brake,Brake System,KBI Brake,Piece,20,12,8,15,8,ACTIVE,2026-03-19,Routine maintenance
+DLP-006,KS1002,Brake Control Board - Main,Brake,Brake System,KBI Brake,Unit,8,3,5,5,3,ACTIVE,2026-03-19,Standard replacement
+DLP-007,TR1001,Rail Collector - Carbon,Current_Collector,Current Collector,Stemmann-Technic,Piece,10,4,6,8,4,ACTIVE,2026-03-19,Critical for collection
+DLP-008,TR1002,Collector Shoe Support - Steel,Current_Collector,Current Collector,Stemmann-Technic,Set,5,2,3,4,2,ACTIVE,2026-03-19,Routine wear
+DLP-009,BRK001,Emergency Ballcock,Brake,Brake System,KBI Brake,Piece,18,10,8,12,6,ACTIVE,2026-03-19,Emergency backup
+DLP-010,BRK002,Brake Valve - Pilot,Brake,Brake System,KBI Brake,Piece,14,6,8,10,5,ACTIVE,2026-03-19,Maintenance item
+DLP-011,APS001,APS Battery Charger Unit,APS,APS,M/s MELCO,Unit,2,0,2,2,1,ACTIVE,2026-03-19,Charging unit
+DLP-012,APS002,APS Power Module,APS,APS,M/s MELCO,Unit,3,1,2,2,1,ACTIVE,2026-03-19,Power supply
+DLP-013,TMS001,TMS Central Control Unit,TMS,TMS,M/s MELCO,Unit,1,0,1,1,1,CRITICAL,2026-03-19,Central processing
+DLP-014,TMS002,TMS Communication Node,TMS,TMS,M/s MELCO,Unit,2,1,1,1,1,ACTIVE,2026-03-19,System communication
+DLP-015,LIT001,Saloon Light Fixture - LED,Lighting,Lighting,Tecknoware,Unit,6,2,4,5,3,ACTIVE,2026-03-19,Energy efficient LED
+DLP-016,LIT002,Light Diffuser Panel,Lighting,Lighting,Tecknoware,Piece,12,4,8,10,5,ACTIVE,2026-03-19,Light diffusion
+DLP-017,CC001,Current Collector Rail - Pantograph,Current_Collector,Current Collector,Stemmann-Technic,Piece,8,3,5,6,3,ACTIVE,2026-03-19,Power collection
+DLP-018,CC002,Insulator Set - Ceramic,Current_Collector,Current Collector,Stemmann-Technic,Set,4,1,3,3,2,ACTIVE,2026-03-19,Electrical insulation
+DLP-019,VAC001,VAC Compressor Unit,VAC,VAC System,Faiveley,Unit,2,0,2,2,1,ACTIVE,2026-03-19,Compression system
+DLP-020,VAC002,VAC Condenser Assembly,VAC,VAC System,Faiveley,Unit,3,1,2,2,1,ACTIVE,2026-03-19,Heat rejection system

@@ -1,12 +1,10 @@
-# Railway RAMS Platform
+# KMRCL DLP Store Inventory Management System
 
 ## Overview
 
-This is a comprehensive Railway Reliability, Availability, Maintainability, and Safety (RAMS) analysis platform designed for rail and metro industry professionals. The application provides tools for searching, analyzing, and managing electrical, mechanical, and electronic components according to European (EN) standards and railway safety norms.
+A comprehensive **Depot Level Parts (DLP) Store Inventory Management System** for Kolkata Metro Rail Corporation Ltd. (KMRCL). Built for metro rail depot operations — tracking parts, tools, vendors, train systems, and stock movements. Includes integrated Railway RAMS analysis module.
 
 ## System Architecture
-
-The application follows a modern full-stack architecture with clear separation of concerns:
 
 ### Frontend Architecture
 - **Framework**: React 18 with TypeScript
@@ -26,97 +24,86 @@ The application follows a modern full-stack architecture with clear separation o
 ### Project Structure
 ```
 ├── client/          # Frontend React application
+│   └── src/
+│       ├── pages/   # All page components
+│       ├── components/  # Shared components (Layout, KhushiAgent)
+│       └── lib/     # Auth helpers, query client
 ├── server/          # Backend Express.js server
 ├── shared/          # Shared types and schemas
-├── migrations/      # Database migration files
-└── attached_assets/ # Documentation and requirements
+└── migrations/      # Database migration files
 ```
 
-## Key Components
+## Authentication
 
-### Data Models
-- **Standards**: EN standards, RAMS specifications, and compliance documents
-- **Components**: Railway equipment with technical specifications and RAMS scores
-- **Suppliers**: Certified suppliers and manufacturer information
-- **Users**: Authentication and authorization system
+- **Admin Passcode**: `9799494321`
+- Auth stored in localStorage (`dlp_auth=true`)
+- All routes protected with auth guard redirect to `/login`
+- Logout button available in sidebar
 
-### Core Features
-1. **Component Search & Filtering**: Advanced search with category, SIL level, and RAMS score filters
-2. **Standards Library**: Comprehensive EN standards database with PDF documentation
-3. **RAMS Analysis**: Real-time reliability, availability, maintainability, and safety scoring
-4. **Compliance Tracking**: Component certification status and standard compliance
-5. **Dashboard Analytics**: Visual metrics and performance indicators
+## Key Features
 
-### UI Components
-- Railway-themed design with blue color scheme
-- Responsive layout supporting mobile and desktop
-- Interactive charts and progress indicators
-- Advanced filtering and search capabilities
-- Export functionality for compliance reports
+### DLP Inventory Management
+1. **Dashboard** (`/`) — KMRCL hero banner, system stock health bars, active alerts, recent transactions, vendor summary
+2. **DLP Inventory** (`/inventory`) — 20 DLP items with real-time stock tracking, search/filter, detail modal
+3. **Tools** (`/tools`) — 39+ tools with category, condition, calibration tracking
+4. **Vendors** (`/vendors`) — 10 certified suppliers (India/Germany/France) with ratings
+5. **Train Systems** (`/systems`) — 14 metro subsystems with stock consumption rates
+6. **Transactions** (`/transactions`) — Full audit trail of receipts, issues, returns, transfers
 
-## Data Flow
+### RAMS Module (retained)
+- Standards Library (30+ EN standards)
+- RAMS Analysis and compliance scoring
+- AI Search (Khushi AI powered by OpenRouter Claude)
+- Drive Documents integration
+- Rail News feed
 
-1. **Data Ingestion**: Standards and component data are seeded through the database migration system
-2. **API Layer**: Express.js routes handle CRUD operations with validation and error handling
-3. **Frontend Queries**: TanStack Query manages API calls with caching and optimistic updates
-4. **User Interface**: React components render data with real-time updates and interactive filtering
+## Data Models (DLP-specific)
 
-### Search Flow
-```
-User Input → Component Search → API Query → Database Filter → Results Display
-```
+| Table | Records | Description |
+|-------|---------|-------------|
+| `dlp_vendors` | 10 | Certified supplier master |
+| `dlp_systems` | 14 | Metro train subsystems |
+| `dlp_items` | 20 | DLP parts inventory |
+| `dlp_tools` | 39 | Workshop tools & equipment |
+| `dlp_transactions` | 8 | Stock movement log |
+| `dlp_alerts` | 4 | Active stock alerts |
 
-### RAMS Calculation
-```
-Component Data → Score Calculation → Risk Assessment → Compliance Status → Visual Dashboard
-```
+## API Endpoints
 
-## External Dependencies
+### DLP APIs
+- `GET /api/dlp/stats` — Dashboard statistics
+- `GET /api/dlp/items` — DLP inventory with search/filter
+- `GET /api/dlp/items/:id` — Single item detail
+- `GET /api/dlp/tools` — Tools inventory
+- `GET /api/dlp/vendors` — Vendor master list
+- `GET /api/dlp/systems` — Train systems breakdown
+- `GET /api/dlp/transactions` — Transaction log
+- `POST /api/dlp/transactions` — Create new transaction
+- `GET /api/dlp/alerts` — Active alerts
+- `PATCH /api/dlp/alerts/:id/resolve` — Resolve alert
 
-### Database & ORM
-- **@neondatabase/serverless**: Serverless PostgreSQL connection
-- **drizzle-orm**: Type-safe ORM with schema definitions
-- **drizzle-kit**: Database migration and schema management
+## External Integrations
 
-### UI & Styling
-- **@radix-ui/***: Accessible component primitives
-- **tailwindcss**: Utility-first CSS framework
-- **class-variance-authority**: Component variant management
-- **lucide-react**: Modern icon library
+- **OpenRouter** (Claude 3 Haiku): AI search via Khushi agent
+- **Google Drive**: Document sync (Folder ID: 1O444fl8fyyf8B0LtVm99FLYvjBtx_TU0)
+- **Neon PostgreSQL**: Serverless database
 
-### Development Tools
-- **vite**: Fast build tool with HMR
-- **typescript**: Type safety across the stack
-- **tsx**: TypeScript execution for development
+## Deployment
 
-## Deployment Strategy
-
-The application is configured for deployment on Replit with the following considerations:
-
-### Development Mode
-- Vite dev server with HMR for frontend
-- tsx for TypeScript execution of backend
-- Environment variables for database configuration
-
-### Production Build
-- Frontend: Vite build targeting modern browsers
-- Backend: esbuild bundling for Node.js deployment
-- Static asset serving through Express.js
-
-### Database Management
-- Drizzle migrations for schema evolution
-- Connection pooling for serverless environments
-- Environment-based configuration
+- Development: `npm run dev` on port 5000
+- Schema updates: `npm run db:push`
+- Re-seed DLP data: `npx tsx -e "import { seedDlpData } from './server/dlp-seed.ts'; seedDlpData()"`
 
 ## Changelog
 
 ```
-Changelog:
-- July 06, 2025. Initial setup
+- March 20, 2026: Full KMRCL DLP Store system built — login, dashboard, inventory (20 items), tools (39), vendors (10), systems (14), transactions, alerts; OpenRouter AI integration; auth guard
+- July 06, 2025: Initial Railway RAMS setup
 ```
 
 ## User Preferences
 
 ```
 Preferred communication style: Simple, everyday language.
+Admin passcode: 9799494321
 ```

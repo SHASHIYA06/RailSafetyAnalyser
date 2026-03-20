@@ -1,0 +1,11 @@
+Vendor_ID,Vendor_Name,Vendor_Code,Contact_Person,Email,Phone,Country,Payment_Terms,Delivery_Days,Quality_Rating,Total_Items_Supplied
+VEND-001,M/s MELCO,MELCO-001,Mr. Rajesh Kumar,rajesh@melco.co.in,+91-22-1234-5678,India,Net 30,14,Excellent,7
+VEND-002,KBI Brake,KBI-001,Mr. Vikram Singh,vikram@kbibrake.com,+91-22-2345-6789,India,Net 30,10,Excellent,8
+VEND-003,Tecknoware,TECK-001,Mr. Ashok Patel,ashok@tecknoware.com,+91-80-3456-7890,India,Net 45,21,Good,2
+VEND-004,Stemmann-Technic,STEM-001,Mr. Heinrich Vogel,support@stemmann.com,+49-89-4567-8901,Germany,Net 60,30,Excellent,2
+VEND-005,Mafelec,MAFE-001,Mr. Jean Pierre,jp@mafelec.com,+33-1-5678-9012,France,Net 30,21,Good,0
+VEND-006,Faiveley,FAIV-001,Mr. Michel Dupont,sales@faiveley.co.in,+91-22-6789-0123,India,Net 30,14,Excellent,4
+VEND-007,Televic,TELE-001,Mr. Tom Richardson,contact@televic.com,+33-2-7890-1234,France,Net 45,30,Good,0
+VEND-008,SAFT,SAFT-001,Mr. Patrick Blanc,sales@saft.fr,+33-1-8901-2345,France,Net 60,45,Excellent,0
+VEND-009,SEMA,SEMA-001,Mr. Klaus Mueller,info@sema.com,+49-89-9012-3456,Germany,Net 30,21,Good,0
+VEND-010,River Engineering,RIVE-001,Mr. Ravi Shankar,contact@rivereng.co.in,+91-22-0123-4567,India,Net 30,7,Excellent,0

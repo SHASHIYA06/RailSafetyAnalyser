@@ -399,6 +399,102 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // ─── DLP ROUTES ────────────────────────────────────────────────────────────
+
+  app.get("/api/dlp/stats", async (req: Request, res: Response) => {
+    try {
+      const stats = await storage.getDlpStats();
+      res.json(stats);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP stats" });
+    }
+  });
+
+  app.get("/api/dlp/items", async (req: Request, res: Response) => {
+    try {
+      const { search, category, status } = req.query as Record<string, string>;
+      const result = await storage.getDlpItems({ search, category, status });
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP items" });
+    }
+  });
+
+  app.get("/api/dlp/items/:id", async (req: Request, res: Response) => {
+    try {
+      const item = await storage.getDlpItem(parseInt(req.params.id));
+      if (!item) return res.status(404).json({ error: "Item not found" });
+      res.json(item);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP item" });
+    }
+  });
+
+  app.get("/api/dlp/tools", async (req: Request, res: Response) => {
+    try {
+      const { search, category, condition } = req.query as Record<string, string>;
+      const result = await storage.getDlpTools({ search, category, condition });
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP tools" });
+    }
+  });
+
+  app.get("/api/dlp/vendors", async (req: Request, res: Response) => {
+    try {
+      const result = await storage.getDlpVendors();
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP vendors" });
+    }
+  });
+
+  app.get("/api/dlp/systems", async (req: Request, res: Response) => {
+    try {
+      const result = await storage.getDlpSystems();
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP systems" });
+    }
+  });
+
+  app.get("/api/dlp/transactions", async (req: Request, res: Response) => {
+    try {
+      const { search, type, limit } = req.query as Record<string, string>;
+      const result = await storage.getDlpTransactions({ search, type, limit: limit ? parseInt(limit) : undefined });
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP transactions" });
+    }
+  });
+
+  app.post("/api/dlp/transactions", async (req: Request, res: Response) => {
+    try {
+      const tx = await storage.createDlpTransaction(req.body);
+      res.json(tx);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create transaction" });
+    }
+  });
+
+  app.get("/api/dlp/alerts", async (req: Request, res: Response) => {
+    try {
+      const result = await storage.getDlpAlerts();
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch DLP alerts" });
+    }
+  });
+
+  app.patch("/api/dlp/alerts/:id/resolve", async (req: Request, res: Response) => {
+    try {
+      const alert = await storage.resolveDlpAlert(parseInt(req.params.id));
+      res.json(alert);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to resolve alert" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

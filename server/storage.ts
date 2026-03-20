@@ -7,6 +7,12 @@ import {
   suppliers,
   componentSuppliers,
   users,
+  dlpItems,
+  dlpVendors,
+  dlpSystems,
+  dlpTransactions,
+  dlpAlerts,
+  dlpTools,
   type User, 
   type InsertUser,
   type Component,
@@ -18,10 +24,17 @@ import {
   type InsertStandard,
   type InsertComponentStandard,
   type InsertStandardClause,
-  type InsertSupplier
+  type InsertSupplier,
+  type DlpItem,
+  type DlpVendor,
+  type DlpSystem,
+  type DlpTransaction,
+  type DlpAlert,
+  type DlpTool,
+  type InsertDlpTransaction,
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, ilike, and, desc, asc, sql, inArray } from "drizzle-orm";
+import { eq, ilike, and, desc, asc, sql, inArray, or } from "drizzle-orm";
 
 export interface IStorage {
   // User management
@@ -526,6 +539,124 @@ export class DatabaseStorage implements IStorage {
       complianceRate,
       sil4Count: Number(sil4Stats?.count) || 0,
     };
+  }
+
+  // ─── DLP METHODS ──────────────────────────────────────────────────────────
+
+  async getDlpStats() {
+    const [items] = await db.select({ count: sql<number>`count(*)` }).from(dlpItems);
+    const [tools] = await db.select({ count: sql<number>`count(*)` }).from(dlpTools);
+    const [vendors] = await db.select({ count: sql<number>`count(*)` }).from(dlpVendors);
+    const [systems] = await db.select({ count: sql<number>`count(*)` }).from(dlpSystems);
+    const [alerts] = await db.select({ count: sql<number>`count(*)` }).from(dlpAlerts).where(eq(dlpAlerts.isResolved, false));
+    const allItems = await db.select({ available: dlpItems.availableQty }).from(dlpItems);
+    const availableUnits = allItems.reduce((sum, i) => sum + (i.available || 0), 0);
+    const lowStockItems = allItems.filter(i => (i.available || 0) === 0).length;
+    return {
+      totalItems: Number(items.count),
+      totalTools: Number(tools.count),
+      totalVendors: Number(vendors.count),
+      totalSystems: Number(systems.count),
+      activeAlerts: Number(alerts.count),
+      availableUnits,
+      lowStockItems,
+    };
+  }
+
+  async getDlpItems(filters?: { search?: string; category?: string; status?: string }) {
+    const conditions = [];
+    if (filters?.search) {
+      conditions.push(or(
+        ilike(dlpItems.description, `%${filters.search}%`),
+        ilike(dlpItems.partNumber, `%${filters.search}%`),
+        ilike(dlpItems.itemId, `%${filters.search}%`)
+      ));
+    }
+    if (filters?.category && filters.category !== "All") {
+      conditions.push(eq(dlpItems.category, filters.category));
+    }
+    if (filters?.status && filters.status !== "All") {
+      conditions.push(eq(dlpItems.status, filters.status));
+    }
+    const items = await db.select().from(dlpItems)
+      .where(conditions.length > 0 ? and(...conditions) : undefined)
+      .orderBy(dlpItems.itemId);
+    return { items, total: items.length };
+  }
+
+  async getDlpItem(id: number) {
+    const [item] = await db.select().from(dlpItems).where(eq(dlpItems.id, id));
+    return item;
+  }
+
+  async getDlpTools(filters?: { search?: string; category?: string; condition?: string }) {
+    const conditions = [];
+    if (filters?.search) {
+      conditions.push(or(
+        ilike(dlpTools.toolName, `%${filters.search}%`),
+        ilike(dlpTools.toolId, `%${filters.search}%`)
+      ));
+    }
+    if (filters?.category && filters.category !== "All") {
+      conditions.push(eq(dlpTools.category, filters.category));
+    }
+    if (filters?.condition && filters.condition !== "All") {
+      conditions.push(eq(dlpTools.condition, filters.condition));
+    }
+    const tools = await db.select().from(dlpTools)
+      .where(conditions.length > 0 ? and(...conditions) : undefined)
+      .orderBy(dlpTools.toolId);
+    return { tools, total: tools.length };
+  }
+
+  async getDlpVendors() {
+    const vendors = await db.select().from(dlpVendors).orderBy(dlpVendors.vendorName);
+    return { vendors, total: vendors.length };
+  }
+
+  async getDlpSystems() {
+    const systems = await db.select().from(dlpSystems).orderBy(dlpSystems.systemId);
+    return { systems, total: systems.length };
+  }
+
+  async getDlpTransactions(filters?: { search?: string; type?: string; limit?: number }) {
+    const conditions = [];
+    if (filters?.search) {
+      conditions.push(or(
+        ilike(dlpTransactions.itemName, `%${filters.search}%`),
+        ilike(dlpTransactions.referenceId, `%${filters.search}%`)
+      ));
+    }
+    if (filters?.type && filters.type !== "All") {
+      conditions.push(eq(dlpTransactions.transactionType, filters.type));
+    }
+    const query = db.select().from(dlpTransactions)
+      .where(conditions.length > 0 ? and(...conditions) : undefined)
+      .orderBy(desc(dlpTransactions.transactionDate));
+    if (filters?.limit) {
+      const transactions = await query.limit(filters.limit);
+      return { transactions, total: transactions.length };
+    }
+    const transactions = await query;
+    return { transactions, total: transactions.length };
+  }
+
+  async createDlpTransaction(data: InsertDlpTransaction) {
+    const [tx] = await db.insert(dlpTransactions).values(data).returning();
+    return tx;
+  }
+
+  async getDlpAlerts() {
+    const alerts = await db.select().from(dlpAlerts).orderBy(desc(dlpAlerts.createdAt));
+    return { alerts, total: alerts.length };
+  }
+
+  async resolveDlpAlert(id: number) {
+    const [alert] = await db.update(dlpAlerts)
+      .set({ isResolved: true, resolvedAt: new Date() })
+      .where(eq(dlpAlerts.id, id))
+      .returning();
+    return alert;
   }
 }
 

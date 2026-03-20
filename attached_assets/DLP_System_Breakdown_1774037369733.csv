@@ -1,0 +1,15 @@
+System_ID,System_Name,Primary_Vendor,Total_Items,Total_Received,Total_Consumed,Total_Available,Critical_Status,Maintenance_Frequency,Last_Updated
+SYS-001,Traction Motor & Inverter,M/s MELCO,2,8,2,6,No,Low,2026-03-19
+SYS-002,Brake System,KBI Brake,4,52,29,23,Yes,High,2026-03-19
+SYS-003,APS (Auxiliary Power Supply),M/s MELCO,2,5,1,4,No,Low,2026-03-19
+SYS-004,TMS (Train Management System),M/s MELCO,2,3,2,1,Yes,Medium,2026-03-19
+SYS-005,Lighting System,Tecknoware,2,18,6,12,No,Medium,2026-03-19
+SYS-006,Current Collector,Stemmann-Technic,2,13,4,9,No,High,2026-03-19
+SYS-007,VAC System,Faiveley,2,5,1,4,No,High,2026-03-19
+SYS-008,PAPIS & CCTV System,Televic,2,0,0,0,No,Low,2026-03-19
+SYS-009,Saloon Door System,KBI,2,0,0,0,No,High,2026-03-19
+SYS-010,Battery System,SAFT,2,0,0,0,No,Low,2026-03-19
+SYS-011,Coupler System,Faiveley,2,0,0,0,No,Medium,2026-03-19
+SYS-012,Fire Detection System,SEMA,2,0,0,0,No,Low,2026-03-19
+SYS-013,Junction Boxes & Terminal Boards,River Engineering,2,0,0,0,No,Low,2026-03-19
+SYS-014,Vehicle Control & Connectors,River Engineering,2,0,0,0,No,Low,2026-03-19

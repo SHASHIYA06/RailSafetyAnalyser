@@ -1,0 +1,116 @@
+﻿id,tool_id,tool_name,tool_number,category,location,condition,calibration_due,issued_to,issued_date,remarks,qty,consumable,created_at,updated_at
+TOOL-001,TL-001,Digital Multimeter,TL-001,Electrical,Tool Room,Good,2026-06-30,,,Fluke 87V,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-002,TL-002,Torque Wrench (50-300 Nm),TL-002,Mechanical,Tool Room,Good,2026-09-30,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-003,TL-003,Oscilloscope (100 MHz),TL-003,Electrical,Electronics Lab,Good,2026-12-31,,,Rigol DS1102E,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-004,TL-004,Insulation Resistance Tester,TL-004,Electrical,Tool Room,Good,2026-06-30,,,Megger MIT430,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-005,TL-005,Hydraulic Jack (20T),TL-005,Mechanical,Pit Area,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-006,TL-006,Laser Alignment Tool,TL-006,Precision,Tool Room,Good,2026-03-31,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-007,TL-007,Borescope Camera,TL-007,Inspection,Tool Room,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-008,TL-008,Infrared Thermometer,TL-008,Measurement,Tool Room,Good,2026-09-30,,,Fluke 568,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-009,TL-009,Cable Crimping Tool,TL-009,Electrical,Tool Room,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-010,TL-010,Pneumatic Drill,TL-010,Mechanical,Workshop,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-011,TL-011,AC Power Quality Analyzer,TL-011,Electrical,Electronics Lab,Good,2026-06-30,,,Fluke 435-II,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-012,TL-012,Wheel Profile Gauge,TL-012,Measurement,Wheel Shop,Good,2026-12-31,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-013,TL-013,Brake Disc Micrometer,TL-013,Measurement,Workshop,Good,2026-09-30,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-014,TL-014,TCMS Laptop (Diagnostic),TL-014,Diagnostic,Electronics Lab,Good,,,,Mitsubishi licensed,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-015,TL-015,Door System Diagnostic Kit,TL-015,Diagnostic,Tool Room,Good,,,,Faiveley proprietary,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-016,TL-016,Clamp Meter (AC/DC),TL-016,Electrical,Tool Room,Good,2026-06-30,,,Fluke 376,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-017,TL-017,Impact Wrench,TL-017,Mechanical,Workshop,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-018,TL-018,Vibration Analyzer,TL-018,Measurement,Tool Room,Good,2026-12-31,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-019,TL-019,Paint Thickness Gauge,TL-019,Measurement,Tool Room,Good,2026-09-30,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-020,TL-020,Loctite Dispenser Kit,TL-020,Mechanical,Workshop,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-021,TL-021,X5 Connector PAPIS,TL-021,Electrical,Almirah 01 Rack 01,Good,,,,Box 7,18,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-022,TL-022,External CCTV Camera Cover,TL-022,Inspection,Almirah 01 Rack 01,Good,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-023,TL-023,MOXA Connector (M12) 18 Pin,TL-023,Electrical,Almirah 01 Rack 01,Good,,,,Box 6,4,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-024,TL-024,Camera Tools,TL-024,Inspection,Almirah 01 Rack 01,Good,,,,,6,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-025,TL-025,Dummy Cap (Male Connector cap),TL-025,Electrical,Almirah 01 Rack 01,Good,,,,Box 6,12,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-026,TL-026,Dust Cap,TL-026,Electrical,Almirah 01 Rack 01,Good,,,,Box 2,60,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-027,TL-027,Stinger Box (Open & Close Sticker),TL-027,Safety,Almirah 01 Rack 01,Good,,,,Box 3,42,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-028,TL-028,Sticker (Spare) Plate,TL-028,Safety,Almirah 01 Rack 01,Good,,,,Box 3,18,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-029,TL-029,Bracket (FDS-HMI),TL-029,Electrical,Almirah 01 Rack 01,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-030,TL-030,Auto Dimmer (Taknoware),TL-030,Electrical,Almirah 01 Rack 01,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-031,TL-031,Auto dimmer sensor,TL-031,Electrical,Almirah 01 Rack 01,Good,,,,,3,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-032,TL-032,TRCC Torsion Adjusting Ring (A10),TL-032,Mechanical,Almirah 01 Rack 01,Good,,,,,20,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-033,TL-033,Thinner (For all paints and primer),TL-033,Consumable,Almirah 01 Rack 01,Good,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-034,TL-034,VCC (BEML),TL-034,Electrical,Almirah 01 Rack 01,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-035,TL-035,DC - DC Converter,TL-035,Electrical,Almirah 01 Rack 01,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-036,TL-036,Black Cable,TL-036,Electrical,Almirah 01 Rack 01,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-037,TL-037,Resistance TB (Battery Resistor),TL-037,Electrical,Almirah 01 Rack 01,Good,,,,,8,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-038,TL-038,Sleeve Black (14mm),TL-038,Electrical,Almirah 01 Rack 01,Good,,,,,3,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-039,TL-039,Relay ACD U204 DMRC (PE0006),TL-039,Electrical,Almirah 01 Rack 01,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-040,TL-040,Relay Socket V23 (PE0007),TL-040,Electrical,Almirah 01 Rack 01,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-041,TL-041,Proximity Sensor (Yellow) (Coupler),TL-041,Electrical,Almirah 01 Rack 02,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-042,TL-042,Molicode (Fuse Box bolt),TL-042,Mechanical,Almirah 01 Rack 02,Good,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-043,TL-043,PAPIS TFT connector,TL-043,Electrical,Almirah 01 Rack 02,Good,,,,Box 2,17,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-044,TL-044,PAPIS related microphone connector,TL-044,Electrical,Almirah 01 Rack 02,Good,,,,Box 2,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-045,TL-045,Pole female light connector,TL-045,Electrical,Almirah 01 Rack 02,Good,,,,Box 2,6,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-046,TL-046,Wago Female Connector,TL-046,Electrical,Almirah 01 Rack 02,Good,,,,Box 2,166,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-047,TL-047,WAGO TB 280,TL-047,Electrical,Almirah 01 Rack 02,Good,,,,,100,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-048,TL-048,WAGO Top Job S 2002,TL-048,Electrical,Almirah 01 Rack 02,Good,,,,,9,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-049,TL-049,WAGO 280 (2.5 mm),TL-049,Electrical,Almirah 01 Rack 02,Good,,,,,7,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-050,TL-050,WAGO 279,TL-050,Electrical,Almirah 01 Rack 02,Good,,,,,88,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-051,TL-051,WAGO 870,TL-051,Electrical,Almirah 01 Rack 02,Good,,,,,13,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-052,TL-052,WAGO 281 (Resistance TB),TL-052,Electrical,Almirah 01 Rack 02,Good,,,,,2,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-053,TL-053,AC Capacitor,TL-053,Electrical,Almirah 01 Rack 02,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-054,TL-054,Walkie Talkie,TL-054,Communication,Almirah 01 Rack 02,Good,,,,,5,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-055,TL-055,Jumper Box,TL-055,Electrical,Almirah 01 Rack 02,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-056,TL-056,Gooseneck Mic + Switch,TL-056,Communication,Almirah 01 Rack 02,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-057,TL-057,Mic Recorder,TL-057,Communication,Almirah 01 Rack 02,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-058,TL-058,Audio Recorder (TS#17),TL-058,Communication,Almirah 01 Rack 02,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-059,TL-059,FDS data Cable (Gray),TL-059,Electrical,Almirah 01 Rack 02,Good,,,,2 mtr,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-060,TL-060,Connector Cable (Black),TL-060,Electrical,Almirah 01 Rack 02,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-061,TL-061,Pressure Governor (II35827/04845),TL-061,Mechanical,Almirah 01 Rack 03,Good,,,,GA Spare,16,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-062,TL-062,Ball Cock (II53482/1A1E),TL-062,Mechanical,Almirah 01 Rack 03,Good,,,,GA Spare,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-063,TL-063,Pressure Gauge,TL-063,Measurement,Almirah 01 Rack 03,Good,,,,Box 1,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-064,TL-064,Blue Plastic Pipe & Other items,TL-064,Mechanical,Almirah 01 Rack 03,Good,,,,Box 1,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-065,TL-065,BCB plate,TL-065,Electrical,Almirah 01 Rack 03,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-066,TL-066,Open / Close sticker,TL-066,Safety,Almirah 01 Rack 03,Good,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-067,TL-067,Foot Marking Sticker,TL-067,Safety,Almirah 01 Rack 03,Good,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-068,TL-068,Spring Washer (Rfw2011022),TL-068,Mechanical,Almirah 01 Rack 03,Good,,,,,8,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-069,TL-069,FDS material (TS# 17) Part no: 66670090346,TL-069,Electrical,Almirah 01 Rack 03,Good,,,,,9,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-070,TL-070,Adjustable Elbow with adaptor male,TL-070,Mechanical,Almirah 01 Rack 03,Good,,,,,3,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-071,TL-071,Paint Spray (Off White),TL-071,Consumable,Almirah 01 Rack 04,Good,,,,BOX 2,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-072,TL-072,Polyester Putty,TL-072,Consumable,Almirah 01 Rack 04,Good,,,,Box 2,100,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-073,TL-073,Disc,TL-073,Mechanical,Almirah 01 Rack 04,Good,,,,Box 2,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-074,TL-074,Sanding,TL-074,Mechanical,Almirah 01 Rack 04,Good,,,,Box 2,2,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-075,TL-075,Air pipe Pneumatic,TL-075,Mechanical,Almirah 01 Rack 04,Good,,,,,3,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-076,TL-076,3 line Socket,TL-076,Electrical,Almirah 01 Rack 04,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-077,TL-077,End Fitting and Pipes For TS# 01 (Modification),TL-077,Mechanical,Almirah 01 Rack 04,Good,,,,Box 1,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-078,TL-078,Brake Pneumatic box,TL-078,Mechanical,Almirah 01 Rack 04,Good,,,,Box 2,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-079,TL-079,Sealant Gun box,TL-079,Mechanical,Almirah 01 Rack 04,Good,,,,Box 2,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-080,TL-080,L3 Switch Power Connector,TL-080,Electrical,Almirah 01 Rack 04,Good,,,,,4,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-081,TL-081,MCB TB Spacer 2type,TL-081,Electrical,Almirah 01 Rack 04,Good,,,,,20,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-082,TL-082,MCB A1,TL-082,Electrical,Almirah 01 Rack 04,Good,,,,,3,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-083,TL-083,M12X Connector,TL-083,Electrical,Almirah 01 Rack 04,Good,,,,,10,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-084,TL-084,(re H) Type Connector,TL-084,Electrical,Almirah 01 Rack 04,Good,,,,,2,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-085,TL-085,Auxiliary Connector,TL-085,Electrical,Almirah 01 Rack 04,Good,,,,,8,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-086,TL-086,KBI Shim Box,TL-086,Mechanical,Almirah 01 Rack 04,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-087,TL-087,Small Shim (3TD15782801),TL-087,Mechanical,Almirah 01 Rack 04,Good,,,,,140,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-088,TL-088,Big Shim (3TD15776R02),TL-088,Mechanical,Almirah 01 Rack 04,Good,,,,,208,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-089,TL-089,New Tool Box 1,TL-089,Safety,Almirah 01 Rack 04,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-090,TL-090,Three Bond (1521),TL-090,Consumable,Almirah 01 Rack 04,Good,,,,,8,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-091,TL-091,Stanley Knife,TL-091,Mechanical,Almirah 01 Rack 04,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-092,TL-092,Cutting Wheel,TL-092,Mechanical,Almirah 01 Rack 04,Good,,,,,20,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-093,TL-093,Marking Tape,TL-093,Consumable,Almirah 01 Rack 04,Good,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-094,TL-094,Small Wratchet,TL-094,Mechanical,Almirah 01 Rack 04,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-095,TL-095,Big Wratchet,TL-095,Mechanical,Almirah 01 Rack 04,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-096,TL-096,Fecom TB (-) VESSEL 9900 2.5 * 75,TL-096,Electrical,Almirah 01 Rack 04,Good,,,,,3,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-097,TL-097,Fecom TB (-) VESSEL 9900 1.8 - 50,TL-097,Electrical,Almirah 01 Rack 04,Good,,,,,3,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-098,TL-098,Teflon Tape White,TL-098,Consumable,Almirah 01 Rack 01,Good,,,,,7,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-099,TL-099,Auxiliary Contact,TL-099,Electrical,Almirah 01 Rack 02,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-100,TL-100,MRD - 2 (Faulty from SEMA),TL-100,Diagnostic,Almirah 01 Rack 02,Faulty,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-101,TL-101,Gromet (6 mm and 3 mm),TL-101,Mechanical,Almirah 01 Rack 05,Good,,,,,19,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-102,TL-102,Welding Rod (AWS A5.9: ER 308L),TL-102,Consumable,Almirah 01 Rack 05,Good,,,,12.5 Kg,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-103,TL-103,Signalling old MCB + Spacer + Aux,TL-103,Electrical,Almirah 01 Rack 05,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-104,TL-104,Packing rubber,TL-104,Consumable,Almirah 01 Rack 05,Good,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-105,TL-105,Gray Paint,TL-105,Consumable,Almirah 01 Rack 05,Good,,,,1 liter,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-106,TL-106,White Paint,TL-106,Consumable,Almirah 01 Rack 05,Good,,,,200 ml,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-107,TL-107,Paint Brush,TL-107,Mechanical,Almirah 01 Rack 05,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-108,TL-108,Drill Machine,TL-108,Mechanical,Almirah 02 Rack 01,Good,,,,,2,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-109,TL-109,Grinding Machine,TL-109,Mechanical,Almirah 02 Rack 01,Good,,,,,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-110,TL-110,Bostik (Damaged) Chemical,TL-110,Consumable,Almirah 02 Rack 01,Damaged,,,,,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-111,TL-111,Spirit Level,TL-111,Measurement,Almirah 02 Rack 02,Good,,,,Door Tool Box,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-112,TL-112,Filler Gauge,TL-112,Measurement,Almirah 02 Rack 02,Good,,,,Door Tool Box,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-113,TL-113,Steel Scale Small,TL-113,Measurement,Almirah 02 Rack 02,Good,,,,Door Tool Box,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-114,TL-114,Silicon Rod,TL-114,Mechanical,Almirah 02 Rack 02,Good,,,,Door Tool Box,1,Yes,2026-03-18 13:09:16,2026-03-18 13:09:16
+TOOL-115,TL-115,Taper Scale,TL-115,Measurement,Almirah 02 Rack 02,Good,,,,Door Tool Box,1,No,2026-03-18 13:09:16,2026-03-18 13:09:16
