@@ -10,19 +10,23 @@ import RAMSAnalysisPage from "@/pages/rams-analysis";
 import NewsPage from "@/pages/news";
 import DocumentsPage from "@/pages/documents";
 import AdminPage from "@/pages/admin";
-import NotFound from "@/pages/not-found";
+import AISearchPage from "@/pages/ai-search";
+import DriveDocumentsPage from "@/pages/drive-documents";
+import NotFoundPage from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={DashboardPage} />
+      <Route path="/search" component={AISearchPage} />
       <Route path="/components" component={ComponentsPage} />
       <Route path="/standards" component={StandardsLibraryPage} />
       <Route path="/rams" component={RAMSAnalysisPage} />
       <Route path="/news" component={NewsPage} />
       <Route path="/documents" component={DocumentsPage} />
+      <Route path="/drive" component={DriveDocumentsPage} />
       <Route path="/admin" component={AdminPage} />
-      <Route component={NotFound} />
+      <Route component={NotFoundPage} />
     </Switch>
   );
 }

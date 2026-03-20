@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   FileText, ExternalLink, Search, Download, BookOpen, Shield,
-  Cpu, Zap, Flame, Wifi, ChevronRight, Star, Filter
+  Cpu, Zap, Flame, Wifi, ChevronRight, Star, Filter, X, Eye
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,9 +49,75 @@ const FEATURED = [
 
 const CATEGORIES = ["RAMS", "EMC", "Software", "Fire Protection", "Cybersecurity", "Rolling Stock", "Signaling", "Track"];
 
+function StandardViewer({ standard, onClose }: { standard: any; onClose: () => void }) {
+  const viewerUrl = standard.pdfUrl
+    ? `https://docs.google.com/viewer?url=${encodeURIComponent(standard.pdfUrl)}&embedded=true`
+    : null;
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-white dark:bg-card w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <div className="flex items-center gap-3 p-4 border-b border-border bg-muted/30 flex-shrink-0">
+          <div className="w-9 h-9 bg-blue-50 dark:bg-blue-950/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <BookOpen className="h-4 w-4 text-blue-600" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-bold text-foreground text-sm">{standard.code}</div>
+            <div className="text-xs text-muted-foreground truncate">{standard.title}</div>
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {standard.pdfUrl && (
+              <a href={standard.pdfUrl} target="_blank" rel="noopener noreferrer">
+                <Button size="sm" variant="outline" className="gap-2 h-8 text-xs">
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  Open Original
+                </Button>
+              </a>
+            )}
+            <button onClick={onClose} className="p-2 hover:bg-muted rounded-lg transition-colors">
+              <X className="h-4 w-4 text-muted-foreground" />
+            </button>
+          </div>
+        </div>
+        <div className="flex-1 overflow-auto">
+          {viewerUrl ? (
+            <iframe src={viewerUrl} className="w-full h-full border-0" title={standard.code} />
+          ) : (
+            <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+              <BookOpen className="h-16 w-16 text-muted-foreground/30 mb-4" />
+              <div className="font-bold text-foreground text-lg mb-2">{standard.code}</div>
+              <div className="text-foreground font-medium mb-1">{standard.title}</div>
+              <div className="text-sm text-muted-foreground mb-2">Version: {standard.version}</div>
+              <div className="text-sm text-muted-foreground leading-relaxed max-w-md mb-6">{standard.description}</div>
+              <div className="bg-muted/50 rounded-2xl p-4 max-w-md mb-6 text-sm text-muted-foreground">
+                Full text of EN/IEC standards requires official purchase from CENELEC, IEC, or your national standards body.
+              </div>
+              <div className="flex gap-3">
+                <a href="https://www.cenelec.eu" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="gap-2">
+                    <ExternalLink className="h-4 w-4" />
+                    CENELEC Portal
+                  </Button>
+                </a>
+                <a href="https://webstore.iec.ch" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="gap-2">
+                    <ExternalLink className="h-4 w-4" />
+                    IEC Webstore
+                  </Button>
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function StandardsLibraryPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [viewingStandard, setViewingStandard] = useState<any>(null);
 
   const { data: standardsData, isLoading } = useQuery({
     queryKey: ['/api/standards', { search: searchQuery, category: selectedCategory }],
@@ -71,7 +137,9 @@ export default function StandardsLibraryPage() {
         </Button>
       }
     >
-      <div className="p-6 space-y-6 animate-fade-in">
+      {viewingStandard && <StandardViewer standard={viewingStandard} onClose={() => setViewingStandard(null)} />}
+
+      <div className="p-4 md:p-6 space-y-6 animate-fade-in">
 
         {/* Featured Standards Hero */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -263,14 +331,18 @@ export default function StandardsLibraryPage() {
                       </div>
 
                       <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="flex-1 h-8 text-xs">
-                          View Clauses
+                        <Button
+                          variant="outline" size="sm" className="flex-1 h-8 text-xs gap-1"
+                          onClick={() => setViewingStandard(standard)}
+                        >
+                          <Eye className="h-3.5 w-3.5" />
+                          View Details
                         </Button>
                         {standard.pdfUrl && (
                           <Button size="sm" asChild className="h-8 text-xs gap-1 gradient-railway text-white border-0">
                             <a href={standard.pdfUrl} target="_blank" rel="noopener noreferrer">
-                              <Download className="h-3 w-3" />
-                              PDF
+                              <ExternalLink className="h-3 w-3" />
+                              Open
                             </a>
                           </Button>
                         )}
