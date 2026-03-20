@@ -3,11 +3,10 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
 const DRIVE_FOLDER_ID = "1O444fl8fyyf8B0LtVm99FLYvjBtx_TU0";
 
 async function callGemini(prompt: string, context: string = ""): Promise<string> {
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
   if (!GEMINI_API_KEY) {
     return "AI search requires a Gemini API key. Please configure GEMINI_API_KEY in your environment settings.";
   }
@@ -46,6 +45,7 @@ Provide a detailed, expert answer focused on railway RAMS engineering. Include r
 }
 
 async function callOpenRouter(prompt: string, context: string = ""): Promise<string> {
+  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
   if (!OPENROUTER_API_KEY) {
     return "OpenRouter requires an API key. Please configure OPENROUTER_API_KEY.";
   }
@@ -59,7 +59,7 @@ async function callOpenRouter(prompt: string, context: string = ""): Promise<str
         "X-Title": "Railway RAMS Platform"
       },
       body: JSON.stringify({
-        model: "google/gemini-flash-1.5",
+        model: "anthropic/claude-3-haiku",
         messages: [
           {
             role: "system",
@@ -265,10 +265,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       let answer: string;
-      if (useOpenRouter && OPENROUTER_API_KEY) {
+      const hasGemini = !!(process.env.GEMINI_API_KEY);
+      const hasOpenRouter = !!(process.env.OPENROUTER_API_KEY);
+      if (useOpenRouter && hasOpenRouter) {
+        answer = await callOpenRouter(question, context);
+      } else if (hasGemini) {
+        answer = await callGemini(question, context);
+        // If Gemini fails, fall back to OpenRouter
+        if (answer.startsWith("AI Error:") && hasOpenRouter) {
+          answer = await callOpenRouter(question, context);
+        }
+      } else if (hasOpenRouter) {
         answer = await callOpenRouter(question, context);
       } else {
-        answer = await callGemini(question, context);
+        answer = "No AI API keys are configured. Please add GEMINI_API_KEY or OPENROUTER_API_KEY.";
       }
 
       res.json({ answer, context: context || null, sources: {
@@ -300,10 +310,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
         )
       ].join("\n");
 
-      const aiSummary = await callGemini(
-        `Summarize and explain the most relevant information for this railway engineering query: "${query}". Provide key standards references and engineering guidance.`,
-        context
-      );
+      const searchPrompt = `Summarize and explain the most relevant information for this railway engineering query: "${query}". Provide key standards references and engineering guidance.`;
+      let aiSummary: string;
+      if (process.env.GEMINI_API_KEY) {
+        aiSummary = await callGemini(searchPrompt, context);
+        if (aiSummary.startsWith("AI Error:") && process.env.OPENROUTER_API_KEY) {
+          aiSummary = await callOpenRouter(searchPrompt, context);
+        }
+      } else if (process.env.OPENROUTER_API_KEY) {
+        aiSummary = await callOpenRouter(searchPrompt, context);
+      } else {
+        aiSummary = "Configure an AI API key to enable AI summaries.";
+      }
 
       res.json({
         components: componentsResult.slice(0, 8),
