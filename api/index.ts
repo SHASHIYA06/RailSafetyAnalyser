@@ -13,12 +13,16 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-(async () => {
-  await registerRoutes(app);
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    res.status(status).json({ message: err.message || "Internal Server Error" });
-  });
-})();
+let routesRegistered = false;
 
-export default app;
+export default async (req: Request, res: Response) => {
+  if (!routesRegistered) {
+    await registerRoutes(app);
+    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+      const status = err.status || err.statusCode || 500;
+      res.status(status).json({ message: err.message || "Internal Server Error" });
+    });
+    routesRegistered = true;
+  }
+  return app(req, res);
+};
