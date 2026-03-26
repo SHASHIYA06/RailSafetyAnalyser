@@ -10,6 +10,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/layout";
+import type { DashboardStats, Component, ComponentsResponse } from "@/types/api";
 
 const SIL_LEVELS = [
   { level: 4, label: "SIL 4", desc: "Catastrophic failure prevention", count: 6, color: "#7c3aed", bg: "bg-purple-50 border-purple-200 text-purple-700" },
@@ -63,8 +64,8 @@ function ScoreDonut({ value, color, size = 80 }: { value: number; color: string;
 }
 
 export default function RAMSAnalysisPage() {
-  const { data: dashboardStats } = useQuery({ queryKey: ['/api/dashboard/stats'] });
-  const { data: componentsData } = useQuery({ queryKey: ['/api/components', { limit: 100 }] });
+  const { data: dashboardStats } = useQuery<DashboardStats>({ queryKey: ['/api/dashboard/stats'] });
+  const { data: componentsData } = useQuery<ComponentsResponse>({ queryKey: ['/api/components', { limit: 100 }] });
 
   const avgScore = dashboardStats?.averageRAMSScore ? Math.round(Number(dashboardStats.averageRAMSScore)) : 94;
   const components = componentsData?.components || [];

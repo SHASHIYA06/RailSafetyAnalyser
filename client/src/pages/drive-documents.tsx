@@ -152,7 +152,7 @@ export default function DriveDocumentsPage() {
   });
 
   const files: DriveFile[] = data?.files || [];
-  const categories = [...new Set(files.map(f => f.category).filter(Boolean))];
+  const categories = [...new Set(files.map(f => f.category).filter((c): c is string => Boolean(c)))];
 
   const filtered = files.filter(f => {
     const matchCat = selectedCategory === "All" || f.category === selectedCategory;

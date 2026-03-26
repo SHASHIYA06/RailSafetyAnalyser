@@ -68,18 +68,15 @@ export default function DlpReportsPage() {
   const totalAvailable = items.reduce((s: number, i: any) => s + (i.availableQty || 0), 0);
   const criticalItems = items.filter((i: any) => i.criticalFlag && i.availableQty <= i.reorderLevel);
 
-  const categoryData = Array.from(
-    items.reduce((m: Map<string, { received: number; consumed: number; available: number }>, i: any) => {
-      const c = i.category || "Other";
-      const cur = m.get(c) || { received: 0, consumed: 0, available: 0 };
-      m.set(c, {
-        received: cur.received + (i.receivedQty || 0),
-        consumed: cur.consumed + (i.consumedQty || 0),
-        available: cur.available + (i.availableQty || 0),
-      });
-      return m;
-    }, new Map())
-  ).map(([name, vals]) => ({ name, ...vals }));
+  const categoryAccumulator: Record<string, { received: number; consumed: number; available: number }> = items.reduce((m: Record<string, { received: number; consumed: number; available: number }>, i: any) => {
+    const c = i.category || "Other";
+    if (!m[c]) m[c] = { received: 0, consumed: 0, available: 0 };
+    m[c].received += i.receivedQty || 0;
+    m[c].consumed += i.consumedQty || 0;
+    m[c].available += i.availableQty || 0;
+    return m;
+  }, {});
+  const categoryData = Object.entries(categoryAccumulator).map(([name, vals]) => ({ name, ...vals }));
 
   const txTypePie = [
     { name: "Receipts", value: transactions.filter((t: any) => t.transactionType === "RECEIPT").length },

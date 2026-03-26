@@ -7,6 +7,7 @@ import Layout from "@/components/layout";
 import ComponentSearch from "@/components/component-search";
 import FilterSidebar from "@/components/filter-sidebar";
 import ComponentCard from "@/components/component-card";
+import type { Component, DashboardStats, ComponentsResponse } from "@/types/api";
 
 interface ComponentFilters {
   search?: string;
@@ -23,11 +24,11 @@ export default function ComponentsPage() {
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const pageSize = 20;
 
-  const { data: componentsData, isLoading } = useQuery({
+  const { data: componentsData, isLoading } = useQuery<ComponentsResponse>({
     queryKey: ['/api/components', { ...filters, limit: pageSize, offset: currentPage * pageSize }],
   });
 
-  const { data: dashboardStats } = useQuery({
+  const { data: dashboardStats } = useQuery<DashboardStats>({
     queryKey: ['/api/dashboard/stats']
   });
 

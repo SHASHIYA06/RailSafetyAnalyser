@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/layout";
+import type { Standard, StandardsResponse } from "@/types/api";
 
 const CATEGORY_CONFIG: Record<string, { color: string; bg: string; icon: any }> = {
   "RAMS": { color: "text-blue-700", bg: "bg-blue-50 border-blue-200", icon: BarChart3 },
@@ -119,7 +120,7 @@ export default function StandardsLibraryPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [viewingStandard, setViewingStandard] = useState<any>(null);
 
-  const { data: standardsData, isLoading } = useQuery({
+  const { data: standardsData, isLoading } = useQuery<StandardsResponse>({
     queryKey: ['/api/standards', { search: searchQuery, category: selectedCategory }],
   });
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  FolderOpen, Upload, FileText, FilePdf, File,
+  FolderOpen, Upload, FileText, File,
   Search, Download, Trash2, Eye, Clock, CheckCircle,
   HardDrive, Database, Cloud
 } from "lucide-react";

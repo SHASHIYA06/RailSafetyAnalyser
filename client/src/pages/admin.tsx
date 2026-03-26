@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Layout from "@/components/layout";
+import type { DashboardStats, Component, Standard } from "@/types/api";
 
 const SYSTEM_JOBS = [
   { id: 1, name: "Database Sync", status: "completed", lastRun: "5 min ago", duration: "2.3s", type: "sync" },
@@ -39,9 +40,9 @@ const STATUS_CONF: Record<string, { color: string; icon: any }> = {
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState("overview");
 
-  const { data: stats } = useQuery({ queryKey: ['/api/dashboard/stats'] });
-  const { data: componentsData } = useQuery({ queryKey: ['/api/components', { limit: 5 }] });
-  const { data: standardsData } = useQuery({ queryKey: ['/api/standards', { limit: 5 }] });
+  const { data: stats } = useQuery<DashboardStats>({ queryKey: ['/api/dashboard/stats'] });
+  const { data: componentsData } = useQuery<{ components: Component[] }>({ queryKey: ['/api/components', { limit: 5 }] });
+  const { data: standardsData } = useQuery<{ standards: Standard[] }>({ queryKey: ['/api/standards', { limit: 5 }] });
 
   return (
     <Layout
